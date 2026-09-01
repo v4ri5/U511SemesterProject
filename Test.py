@@ -1,10 +1,8 @@
 from U511SemesterProject.Process import Process
+from U511SemesterProject.harvest import harvest_processes
 
-# Testing the process class and its methods
-p = Process("P1", 0, 5)
-p.start = 2
-p.completion = 7
+processes = harvest_processes()
 
-print(p.turnaround_time())   # 7
-print(p.wait_time())         # 2
-print(p.response_time())     # 2
+print("Processes to be scheduled:")
+for process in processes:
+    print(process)

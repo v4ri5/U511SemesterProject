@@ -1,11 +1,13 @@
 # The processes to be scheduled is defined in this file. 
 # The Process class represents a process with its attributes 
 # and methods to calculate turnaround time, wait time, and response time.
+import psutil
 class Process:
-    def __init__(self, pid, arrival, burst):
+    def __init__(self, pid, arrival, burst, threads):
         self.pid = pid
         self.arrival = arrival
         self.burst = burst
+        self.threads = threads
         self.start = None
         self.completion = None
         self.state = "new"
