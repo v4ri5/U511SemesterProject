@@ -1,5 +1,6 @@
 import psutil
 from U511SemesterProject.Process import Process
+
 ##Collects the processes to be scheduled and their attributes from the system using the psutil library.
 
 def harvest_processes():
@@ -11,7 +12,7 @@ def harvest_processes():
             burst = proc.info['cpu_times'].user + proc.info['cpu_times'].system
             threads = proc.info['num_threads']
             processes.append(Process(pid, arrival, burst, threads))
-        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess): ## Handles exceptions from process extra process information that we cant use 
             pass
     return processes
         
