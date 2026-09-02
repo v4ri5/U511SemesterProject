@@ -14,4 +14,4 @@ if __name__ == "__main__":
     procs = harvest_processes()
     print("Processes to be scheduled:")
     for p in procs:
-        print(p.pid, p.arrival, p.burst, p.threads)
+        print(f"PID: {p.pid}, Arrival: {p.arrival}, Burst: {p.burst}, Threads: {p.threads}")
