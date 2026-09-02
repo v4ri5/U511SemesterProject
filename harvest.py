@@ -1,5 +1,5 @@
 import psutil
-from U511SemesterProject.Process import Process
+from Process import Process
 
 ##Collects the processes to be scheduled and their attributes from the system using the psutil library.
 

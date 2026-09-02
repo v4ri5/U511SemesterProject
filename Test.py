@@ -1,5 +1,5 @@
-from U511SemesterProject.Process import Process
-from U511SemesterProject.harvest import harvest_processes
+from Process import Process
+from harvest import harvest_processes
 
 processes = harvest_processes()
 
