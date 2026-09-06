@@ -5,15 +5,24 @@ from Process import Process
 
 def harvest_processes():
     processes = []                  #List of processes to be scheduled
-    for proc in psutil.process_iter(['pid','create_time','cpu_times', 'num_threads']): # Get process information
+    
+    floor = psutil.boot_time()
+    DroppedLog = []
+    
+    for proc in psutil.process_iter(['pid','create_time','cpu_times', 'num_threads', 'nice']): # Get process information
         try:
             pid = proc.info['pid']
             arrival = proc.info['create_time']
             burst = proc.info['cpu_times'].user + proc.info['cpu_times'].system
             threads = proc.info['num_threads']
-            processes.append(Process(pid, arrival, burst, threads))
+            priority = proc.info['nice'] if proc.info['nice'] is not None else 0  # Default priority to 0 if not available
+            #Excludes things that dont take any cpu time and things that happen before the boot time 
+            if burst < 0.01 or arrival < floor:
+                DroppedLog.append((pid, burst, arrival))
+                continue
+            processes.append(Process(pid, arrival, burst, threads, priority))
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess): ## Handles exceptions from process extra process information that we cant use 
             pass
-    return processes
-        
+    return processes, DroppedLog
+
         
