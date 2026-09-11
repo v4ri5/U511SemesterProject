@@ -23,6 +23,7 @@ def priority_scheduling(processes):
         current.start = clock
         clock = clock + current.burst
         current.completion = clock
+        current.state = "completed"
         completed_processes.append(current)
         unrun.remove(current)
         

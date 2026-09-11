@@ -11,12 +11,14 @@ processes = [
     Process(3, 100, 5, 4, 0)
 ]
 """
-
-
+    
+    
 print("Priority Scheduled Processes:")
 print(priority_scheduling(processes))
 print(len(dropped))
 for _ in dropped:
     print(dropped)
+    
+    
 ## The data presented isnt normalizes and there is no filtering of actually schedulable processes.
 ##The data is just raw data from the system.
