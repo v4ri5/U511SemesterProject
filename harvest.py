@@ -11,6 +11,10 @@ def harvest_processes():
     
     for proc in psutil.process_iter(['pid','create_time','cpu_times', 'num_threads', 'nice']): # Get process information
         try:
+            cpu_times = proc.info['cpu_times']
+            if cpu_times is None:
+                continue
+
             pid = proc.info['pid']
             arrival = proc.info['create_time']
             burst = proc.info['cpu_times'].user + proc.info['cpu_times'].system
