@@ -3,11 +3,12 @@
 # and methods to calculate turnaround time, wait time, and response time.
 import psutil
 class Process:
-    def __init__(self, pid, arrival, burst, threads):
+    def __init__(self, pid, arrival, burst, threads, priority):
         self.pid = pid
         self.arrival = arrival
         self.burst = burst
         self.threads = threads
+        self.priority = priority
         self.start = None
         self.completion = None
         self.state = "new"

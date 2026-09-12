@@ -2,7 +2,7 @@ from Process import Process
 from harvest import harvest_processes
 from SJF import non_preemptive_sjf
 
-processes = harvest_processes()
+#processes = harvest_processes()
 
 print("Processes to be scheduled:")
 
