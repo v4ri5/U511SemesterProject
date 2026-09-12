@@ -3,6 +3,8 @@ from Process import Process
 
 ##Collects the processes to be scheduled and their attributes from the system using the psutil library.
 
+floor = psutil.boot_time()
+
 def harvest_processes():
     processes = []                  #List of processes to be scheduled
     
@@ -16,6 +18,7 @@ def harvest_processes():
                 continue
 
             pid = proc.info['pid']
+            #removes window processes that mess up math
             arrival = proc.info['create_time']
             burst = proc.info['cpu_times'].user + proc.info['cpu_times'].system
             threads = proc.info['num_threads']

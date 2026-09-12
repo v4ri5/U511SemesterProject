@@ -23,5 +23,13 @@ class Process:
     def response_time(self):
         return self.start - self.arrival
 
-    def __repr__(self):
-        return f"[->Process {self.pid}:, ->Arrival={self.arrival},->Burst={self.burst}, ->Start={self.start}, ->Completion={self.completion}, ->State={self.state}]\n"
+    def __str__(self):
+        return (f"Process {self.pid}: "
+               f"Arrival={self.arrival:.2f}, "
+               f"Burst={self.burst:.2f}, "
+               f"Start={self.start:.2f}, "
+               f"Completion={self.completion:.2f}, "
+               f"Waiting Time: {self.wait_time():.2f}, "
+               f"Turnaround Time: {self.turnaround_time():.2f}, "
+               f"Response Time: {self.response_time():.2f}, "
+               f"State={self.state}")
