@@ -23,7 +23,7 @@ class Process:
     def response_time(self):
         return self.start - self.arrival
 
-    def __str__(self):
+    def __repr__(self):
         return (f"Process {self.pid}: "
                f"Arrival={self.arrival:.2f}, "
                f"Burst={self.burst:.2f}, "
