@@ -19,5 +19,3 @@ def harvest_processes():
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess): ## Handles exceptions from process extra process information that we cant use 
             pass
     return processes
-        
-        
