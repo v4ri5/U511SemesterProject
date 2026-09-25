@@ -15,7 +15,7 @@ def fcfs_schedule(processes):
     return scheduled
 
 if __name__ == "__main__":
-    procs = harvest_processes()
+    procs, _ = harvest_processes()
     scheduled = fcfs_schedule(procs)
 
     total_wait = 0

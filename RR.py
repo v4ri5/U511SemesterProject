@@ -27,7 +27,7 @@ def rr_schedule(processes, quantum=quantum):
     return scheduled
 
 if __name__ == "__main__":
-    procs = harvest_processes()
+    procs, _ = harvest_processes()
     scheduled = rr_schedule(procs)
 
     total_wait = 0
